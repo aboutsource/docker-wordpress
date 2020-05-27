@@ -18,4 +18,4 @@ jobs:
     - name: Login to quay.io
       run: echo ${{ secrets.QUAYIO_PASSWORD }} | docker login -u="${{ secrets.QUAYIO_USERNAME }}" --password-stdin quay.io
     - name: Push image
-      run: docker push quay.io/aboutsource/wordpress:7.4-apache
+      run: docker push quay.io/aboutsource/wordpress:php7.4-apache
