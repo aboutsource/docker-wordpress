@@ -68,11 +68,14 @@ COPY dockerconfig/php.ini /etc/php/7.4/apache2/
 COPY dockerconfig/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# Setup wp-cli
+# Setup wp-cli & composer
 RUN curl -Ls -o /usr/local/bin/wp https://github.com/wp-cli/wp-cli/releases/download/v2.4.0/wp-cli-2.4.0.phar
+RUN curl -Ls -o /usr/local/bin/composer https://getcomposer.org/download/1.10.6/composer.phar
+
 COPY dockerconfig/SHA512SUMS /tmp/SHA512SUMS
 RUN sha512sum --check --strict /tmp/SHA512SUMS
-RUN chmod +x /usr/local/bin/wp
+RUN chmod +x /usr/local/bin/wp && \
+    chmod +x /usr/local/bin/composer
 
 EXPOSE 80
 
