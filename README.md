@@ -1,6 +1,6 @@
 # Docker WordPress Base Image
 
-[![Docker Repository on Quay](https://quay.io/repository/aboutsource/wordpress/status "Docker Repository on Quay")](https://quay.io/repository/aboutsource/wordpress)
+![Build docker image](https://github.com/aboutsource/docker-wordpress/workflows/Build%20docker%20image/badge.svg) [![Docker Repository on Quay](https://quay.io/repository/aboutsource/wordpress/status "Docker Repository on Quay")](https://quay.io/repository/aboutsource/wordpress)
 
 Yet another docker base images for wordpress
 

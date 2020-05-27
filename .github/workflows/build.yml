@@ -1,4 +1,4 @@
-name: Build docker image for new releases
+name: Build docker image
 
 on:
   push:
