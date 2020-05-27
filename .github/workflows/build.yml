@@ -14,7 +14,7 @@ jobs:
     - name: Git checkout
       uses: actions/checkout@v2
     - name: Build docker image
-      run: docker build . --tag quay.io/aboutsource/wordpress:7.4-apache
+      run: docker build . --tag quay.io/aboutsource/wordpress:php7.4-apache
     - name: Login to quay.io
       run: echo ${{ secrets.QUAYIO_PASSWORD }} | docker login -u="${{ secrets.QUAYIO_USERNAME }}" --password-stdin quay.io
     - name: Push image
