@@ -46,9 +46,10 @@ RUN sed -ri 's/^export ([^=]+)=(.*)$/: ${\1:=\2}\nexport \1/' /etc/apache2/envva
 # Adjust pid file location
 ENV APACHE_PID_FILE=/tmp/apache2.pid
 
-# Log to stdout/stderr
-RUN sed 's:ErrorLog .\+$:ErrorLog /dev/stderr:' -i /etc/apache2/sites-available/000-default.conf && \
-    sed 's:CustomLog .\+$:CustomLog /dev/stdout combined:' -i /etc/apache2/sites-available/000-default.conf
+# Log to stdout/stderr considering write permissions on forked processes running with user other than root
+RUN ln -sf /dev/stdout /var/log/apache2/access.log && \
+    ln -sf /dev/stderr /var/log/apache2/error.log && \
+    ln -sf /dev/null /var/log/apache2/other_vhosts_access.log
 
 # Apache + PHP requires preforking Apache for best results
 RUN a2dismod mpm_event && a2enmod mpm_prefork
