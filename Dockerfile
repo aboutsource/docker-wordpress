@@ -62,7 +62,7 @@ RUN sed 's:/var/www/html:/var/www/application:' -i /etc/apache2/sites-available/
 
 # Allow to listen on a different port than 80
 ENV APACHE_PORT=80
-RUN sed 's:<VirtualHost \*\:80>:<VirtualHost \*\:${APACHE_PORT}>:' -i /etc/apache2/sites-available/000-default.conf
+RUN sed 's/<VirtualHost \*:80>/<VirtualHost \*:${APACHE_PORT}>/' -i /etc/apache2/sites-available/000-default.conf
 RUN sed 's:Listen 80:Listen ${APACHE_PORT}:' -i /etc/apache2/ports.conf
 
 # Copy configs
